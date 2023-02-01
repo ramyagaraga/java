@@ -1,0 +1,10 @@
+---
+# tasks file for java_demo_role
+    - name: apt update 
+      ansible.builtin.apt: 
+        update_cache: true 
+      when: ansible_facts['distribution'] == "Ubuntu" 
+    - name: install java 
+      ansible.builtin.package: 
+        name: "{{java_package}}" 
+        state: present

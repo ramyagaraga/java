@@ -1,0 +1,13 @@
+--- 
+- name: install java 
+  hosts: all 
+  become: yes 
+  tasks: 
+    - name: apt update 
+      ansible.builtin.apt: 
+        update_cache: true 
+      when: ansible_facts['distribution'] == "Ubuntu" 
+    - name: install java 
+      ansible.builtin.package: 
+        name: "{{java_package}}" 
+        state: present
